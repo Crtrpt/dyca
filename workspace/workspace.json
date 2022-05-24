@@ -1,0 +1,11 @@
+{
+  "platform": [
+    {
+      "name": "local",
+      "dir": "./workspace",
+      "enable": true,
+      "description": "文件保存到本地",
+      "plugin": "localAdapter"
+    }
+  ]
+}
