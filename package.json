@@ -19,8 +19,6 @@
     "@fortawesome/vue-fontawesome": "^3.0.0-5",
     "@popperjs/core": "^2.11.5",
     "@tailwindcss/forms": "^0.5.2",
-    "@variantjs/core": "^0.0.90",
-    "@variantjs/vue": "^0.0.22",
     "body-scroll-lock": "^4.0.0-beta.0",
     "chromedriver": "^101.0.0",
     "editorjs-button": "^1.0.4",

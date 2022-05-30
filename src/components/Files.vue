@@ -13,8 +13,8 @@
         <font-awesome-icon :icon="r.type" class="px-2" />
       </template>
       <template v-if="r.type == 'folder'">
-        <font-awesome-icon v-if="r._open" icon="folder-open" class="px-2" />
-        <font-awesome-icon v-else icon="folder-closed" class="px-2" />
+        <font-awesome-icon v-if="r._open" icon="folder-open" class="px-2 w-5" />
+        <font-awesome-icon v-else icon="folder-closed" class="px-2 w-5" />
       </template>
       <div>{{ r.name }}</div>
     </div>

@@ -1,7 +1,6 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 import "./index.css";
-import { variantJS } from "@variantjs/vue";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faFile,
@@ -11,6 +10,9 @@ import {
   faChevronCircleRight,
   faChevronCircleDown,
   faFolderClosed,
+  faSpinner,
+  faCircle,
+  faCircleNotch,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { createPinia } from "pinia";
@@ -22,12 +24,14 @@ library.add(
   faFolderOpen,
   faFolderClosed,
   faChevronCircleRight,
-  faChevronCircleDown
+  faChevronCircleDown,
+  faSpinner,
+  faCircleNotch
 );
 
 const app = createApp(App);
 
-app.use(variantJS);
+
 app.use(createPinia());
 
 app.component("font-awesome-icon", FontAwesomeIcon);

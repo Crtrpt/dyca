@@ -33,6 +33,9 @@ export default {
       file:{
           deep:true,
           handler(n,o){
+              if(n.type!="file"){
+                  return;
+              }
             if((n?.hashCode||true)==(o?.hashCode||false)){
                   return;
             }
@@ -59,6 +62,7 @@ export default {
               console.log("初始化");
             },
             onChange: (api, event) => {
+                //TODO 延迟保存
               editor
                 .save()
                 .then((outputData) => {

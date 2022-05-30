@@ -1,5 +1,5 @@
 <template>
-  <div class="p-2">Dyca 
+  <div class="p-2 ">Dyca 
 </div>
 </template>
 <script lang="ts">
