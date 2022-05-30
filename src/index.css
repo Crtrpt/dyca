@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.dyca ::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+.dyca ::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+.dyca ::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.1);
+  background-clip: padding-box;
+  border: solid transparent;
+  border-radius: 10px;
+}
+.dyca ::-webkit-scrollbar-track {
+  background-clip: padding-box;
+  border: solid transparent;
+  border-width: 1px;
+}
+.dyca .left {
+  display: flex;
+  flex-grow: 1;
+}
+.dyca .right {
+  display: flex;
+}

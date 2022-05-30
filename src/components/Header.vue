@@ -1,5 +1,6 @@
 <template>
-  <div class="p-2">header</div>
+  <div class="p-2">Dyca 
+</div>
 </template>
 <script lang="ts">
 export default {

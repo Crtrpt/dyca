@@ -1,5 +1,5 @@
 <template>
-  <div class="p-2">footer</div>
+  <div class="p-2">v:0.0.1</div>
 </template>
 
 <script lang="ts">
