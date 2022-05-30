@@ -43,7 +43,7 @@ export const useFileStore = defineStore("filesStore", {
           _open: false,
           children: [
             {
-              name: "f1",
+              name: "第一章",
               type: "file",
               hashCode: "55",
               content: {
@@ -59,7 +59,7 @@ export const useFileStore = defineStore("filesStore", {
               },
             },
             {
-              name: "f2",
+              name: "第二章",
               type: "file",
               hashCode: "66",
               content: {
