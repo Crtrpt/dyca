@@ -10,7 +10,7 @@
     >
       <font-awesome-icon
         icon="folder-plus"
-        class="px-2 cursor-pointer"
+        class="px-2 cursor-pointer hover:text-blue-900"
         @click="
           () => {
             showFolderDialog = true;
@@ -19,7 +19,7 @@
       />
       <font-awesome-icon
         icon="file-circle-plus"
-        class="px-2 cursor-pointer"
+        class="px-2 cursor-pointer hover:text-blue-900"
         @click="
           () => {
             showFileDialog = true;
