@@ -8,7 +8,7 @@
         'border-white': cur != r,
         ['pl-' + (r._level * 4 + 2)]: true,
       }"
-      @click="setCurFile(r)"
+      @click="setRouteWithCurFile(r)"
       @contextmenu="setCurFileV1(r)"
     >
       <template v-if="r.type == 'file'">
@@ -37,8 +37,12 @@ export default {
   },
   methods: {
     ...mapActions(useFileStore, ["setCurFile", "setCurFileV1"]),
+    setRouteWithCurFile(r) {
+      console.log(this.$router);
+      this.$router.push({ path: "/file" + r._path });
+      this.setCurFile(r);
+    },
   },
-
   props: {
     data: Array,
   },

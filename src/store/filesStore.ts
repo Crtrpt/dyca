@@ -9,20 +9,22 @@ export const useFileStore = defineStore("filesStore", {
           _open: false,
           _level: 0,
           _delete: false,
+          _path: "/v4.0.1",
           children: [
             {
               name: "f1",
               type: "file",
-              hashCode: "11",
               _level: 1,
               _delete: false,
+              _path: "/v4.0.1/f1",
             },
             {
               name: "f2",
               type: "file",
-              hashCode: "22",
+
               _level: 1,
               _delete: false,
+              _path: "/v4.0.1/f2",
             },
           ],
         },
@@ -32,21 +34,22 @@ export const useFileStore = defineStore("filesStore", {
           _open: false,
           _level: 0,
           _delete: false,
-
+          _path: "/v4.0.2",
           children: [
             {
               name: "f1",
               type: "file",
-              hashCode: "33",
+
               _level: 1,
               _delete: false,
+              _path: "/v4.0.2/f1",
             },
             {
               name: "f2",
               type: "file",
-              hashCode: "44",
               _level: 1,
               _delete: false,
+              _path: "/v4.0.2/f2",
             },
           ],
         },
@@ -73,7 +76,6 @@ export const useFileStore = defineStore("filesStore", {
           this.cur.children.push({
             name: fName,
             type: "file",
-            hashCode: "66",
             _open: false,
             _delete: false,
             _level: this.cur._level + 1,
@@ -94,7 +96,6 @@ export const useFileStore = defineStore("filesStore", {
         this.root.push({
           name: fName,
           type: "file",
-          hashCode: "66",
           _open: false,
           _delete: false,
           _level: 0,
@@ -123,7 +124,6 @@ export const useFileStore = defineStore("filesStore", {
             _open: false,
             _delete: false,
             _level: this.cur._level + 1,
-            hashCode: "66",
             children: [],
           });
         }
@@ -134,7 +134,6 @@ export const useFileStore = defineStore("filesStore", {
           _open: false,
           _delete: false,
           _level: 0,
-          hashCode: "66",
           children: [],
         });
       }

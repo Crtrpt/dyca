@@ -1,5 +1,7 @@
 <template>
-  <div class="overflow-auto flex flex-col relative">
+  <div
+    class="overflow-auto flex flex-col relative flex-grow border-x bg-gray-200"
+  >
     <div class="flex flex-row-reverse m-5 absolute right-0">
       <Action class="transition-all"></Action>
     </div>
@@ -10,8 +12,7 @@
 <script lang="ts">
 import { useFileStore } from "../store/filesStore";
 import { mapActions, mapState } from "pinia";
-import Editor from "./Editor.vue";
-import Action from "./Action.vue";
+import Action from "../components/Action.vue";
 
 export default {
   name: "Center",
@@ -36,8 +37,6 @@ export default {
     },
   },
   mounted() {},
-  components: { Editor, Action },
+  components: { Action },
 };
 </script>
-
-<style></style>

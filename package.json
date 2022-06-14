@@ -25,7 +25,8 @@
     "editorjs-button": "^1.0.4",
     "keyboardjs": "^2.6.4",
     "pinia": "^2.0.14",
-    "vue": "^3.2.25"
+    "vue": "^3.2.25",
+    "vue-router": "^4.0.16"
   },
   "devDependencies": {
     "@editorjs/code": "^2.7.0",

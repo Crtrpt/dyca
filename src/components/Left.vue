@@ -1,6 +1,13 @@
 <template>
   <div class="select-none flex">
-    <div class="text-gray-500 text-sm flex flex-row-reverse py-2">
+    <div
+      class="text-gray-500 text-sm flex flex-row-reverse py-2"
+      @click="
+        () => {
+          setCurFileV1(null);
+        }
+      "
+    >
       <font-awesome-icon
         icon="folder-plus"
         class="px-2 cursor-pointer"
@@ -39,6 +46,7 @@ import { useFileStore } from "../store/filesStore";
 import ContextMenu from "./ContextMenu.js";
 import NewFile from "./NewFile.vue";
 import NewFolder from "./NewFolder.vue";
+import { mapActions } from "pinia";
 
 export default {
   name: "Left",
@@ -46,7 +54,7 @@ export default {
   computed: {
     ...mapState(useFileStore, ["root", "cur"]),
   },
-  methods: {},
+  methods: { ...mapActions(useFileStore, ["setCurFile", "setCurFileV1"]) },
   setup() {
     const fileStore = useFileStore();
     return {

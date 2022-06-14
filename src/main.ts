@@ -1,5 +1,9 @@
 import { createApp } from "vue";
-import App from "./App.vue";
+import { createRouter, createWebHashHistory } from "vue-router";
+
+import Dyca from "./Dyca.vue";
+import Home from "./Home.vue";
+import Center from "./view/Center.vue";
 import "./index.css";
 import "./Context.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -36,7 +40,7 @@ library.add(
   faCircleNotch
 );
 
-const app = createApp(App);
+const app = createApp(Dyca);
 
 app.use(createPinia());
 
@@ -52,5 +56,27 @@ for (const idx in components) {
 componentsList.forEach((component) => {
   app.component(component.name, component);
 });
+
+const User = {
+  template: "<div>User</div>",
+};
+
+const routes = [
+  {
+    path: "/file/:filepaths*",
+    component: Center,
+  },
+  {
+    path: "/",
+    component: Home,
+  },
+];
+
+const router = createRouter({
+  history: createWebHashHistory(),
+  routes,
+});
+
+app.use(router);
 
 app.mount("#app");
