@@ -1,6 +1,7 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 import "./index.css";
+import "./Context.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faFile,
@@ -13,11 +14,17 @@ import {
   faSpinner,
   faCircle,
   faCircleNotch,
+  faAdd,
+  faFolderPlus,
+  faFileCirclePlus,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { createPinia } from "pinia";
 
 library.add(
+  faFolderPlus,
+  faFileCirclePlus,
+  faAdd,
   faUserSecret,
   faFile,
   faFolder,
@@ -30,7 +37,6 @@ library.add(
 );
 
 const app = createApp(App);
-
 
 app.use(createPinia());
 

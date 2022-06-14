@@ -38,6 +38,7 @@ export default {
   methods: {
     ...mapActions(useFileStore, ["setCurFile"]),
   },
+
   props: {
     data: Array,
     level: {

@@ -28,11 +28,6 @@
                   'group flex w-full items-center rounded-md px-2 py-2 text-sm',
                 ]"
               >
-                <ArchiveIcon
-                  :active="active"
-                  class="mr-2 h-5 w-5 text-blue-400"
-                  aria-hidden="true"
-                />
                 发布
               </button>
             </MenuItem>
@@ -43,11 +38,6 @@
                   'group flex w-full items-center rounded-md px-2 py-2 text-sm',
                 ]"
               >
-                <MoveIcon
-                  :active="active"
-                  class="mr-2 h-5 w-5 text-blue-400"
-                  aria-hidden="true"
-                />
                 保存
               </button>
             </MenuItem>
@@ -60,11 +50,6 @@
                   'group flex w-full items-center rounded-md px-2 py-2 text-sm',
                 ]"
               >
-                <EditIcon
-                  :active="active"
-                  class="mr-2 h-5 w-5 text-blue-400"
-                  aria-hidden="true"
-                />
                 删除
               </button>
             </MenuItem>
