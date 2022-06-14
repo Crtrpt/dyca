@@ -3,7 +3,7 @@
     <div class="flex flex-row-reverse m-5 absolute right-0">
       <Action class="transition-all"></Action>
     </div>
-    <div><Editor :file="cur"></Editor></div>
+    <div><Editor :file="cur" v-if="cur != null"></Editor></div>
   </div>
 </template>
 

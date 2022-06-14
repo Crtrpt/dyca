@@ -1,5 +1,5 @@
 <template>
-  <div class="select-none">
+  <div class="select-none flex">
     <div class="text-gray-500 text-sm flex flex-row-reverse py-2">
       <font-awesome-icon
         icon="folder-plus"
@@ -21,8 +21,13 @@
       />
       <NewFile v-model="showFileDialog"></NewFile>
       <NewFolder v-model="showFolderDialog"></NewFolder>
+      <DeleteConfirm
+        v-model="showDeleteConfirmDialog"
+        :showDeleteConfirmDialogTitle="showDeleteConfirmDialogTitle"
+        :showDeleteConfirmDialogDesc="showDeleteConfirmDialogDesc"
+      ></DeleteConfirm>
     </div>
-    <div class="border-t relative" ref="file">
+    <div class="border-t relative flex-grow overflow-auto" ref="file">
       <Files :data="root" class="flex-col"></Files>
     </div>
   </div>
@@ -39,7 +44,7 @@ export default {
   name: "Left",
   components: { NewFile, NewFolder },
   computed: {
-    ...mapState(useFileStore, ["root"]),
+    ...mapState(useFileStore, ["root", "cur"]),
   },
   methods: {},
   setup() {
@@ -65,7 +70,17 @@ export default {
         },
       },
       null,
-      { text: "删除", value: "remove", onclick: () => {} },
+      {
+        text: "删除",
+        value: "remove",
+        onclick: () => {
+          this.showDeleteConfirmDialogTitle =
+            "删除" + (this.cur.type == "file" ? "文件" : "目录");
+          this.showDeleteConfirmDialogDesc =
+            "确认删除" + (this.cur.type == "file" ? "文件" : "目录");
+          this.showDeleteConfirmDialog = true;
+        },
+      },
     ]);
     menu.install();
   },
@@ -73,6 +88,9 @@ export default {
     return {
       showFileDialog: false,
       showFolderDialog: false,
+      showDeleteConfirmDialog: false,
+      showDeleteConfirmDialogTitle: "",
+      showDeleteConfirmDialogDesc: "",
     };
   },
 };

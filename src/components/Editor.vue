@@ -1,5 +1,5 @@
 <template>
-    <div class="shadow rounded mx-auto p-10 mt-20" id="editorjs"></div>
+  <div class="shadow rounded mx-auto p-10 mt-20" id="editorjs"></div>
 </template>
 
 <script lang="ts">
@@ -16,66 +16,64 @@ import { mapActions, mapState } from "pinia";
 
 export default {
   name: "Editor",
-  props:{
-      file:Object,
-
+  props: {
+    file: Object,
   },
-   methods: {
+  methods: {
     ...mapActions(useFileStore, ["save"]),
   },
   data() {
     return {
       editor: null,
-     
     };
   },
-  watch:{
-      file:{
-          deep:true,
-          handler(n,o){
-              if(n.type!="file"){
-                  return;
-              }
-            if((n?.hashCode||true)==(o?.hashCode||false)){
-                  return;
-            }
-            if(this.editor){
-                console.log("=============");
-                console.log(this.editor);
-                this.editor.destroy();
-            }
-            const editor = (this.editor = new EditorJS({
-            holder: "editorjs",
-            autofocus: true,
-            placeholder: "输入你要发表的内容",
-            data:this.file.content||[],
-            tools: {
-              ImageTool,
-              Table,
-              CodeTool,
-              Paragraph,
-              Quote,
-              List,
-              Header,
-            },
-            onReady: () => {
-              console.log("初始化");
-            },
-            onChange: (api, event) => {
-                //TODO 延迟保存
-              editor
-                .save()
-                .then((outputData) => {
-                   this.save(outputData);
-                   console.log("Article data: ", JSON.stringify(outputData));
-                })
-                .catch((error) => {
-                  console.log("Saving failed: ", error);
-                });
-            },
-            }));
-          }
-      }
+  watch: {
+    file: {
+      deep: true,
+      handler(n, o) {
+        if (n.type != "file") {
+          return;
+        }
+        if ((n?.hashCode || true) == (o?.hashCode || false)) {
+          return;
+        }
+        if (this.editor) {
+          console.log("=============");
+          console.log(this.editor);
+          this.editor.destroy();
+        }
+        const editor = (this.editor = new EditorJS({
+          holder: "editorjs",
+          autofocus: true,
+          placeholder: "输入你要发表的内容",
+          data: this.file.content || [],
+          tools: {
+            ImageTool,
+            Table,
+            CodeTool,
+            Paragraph,
+            Quote,
+            List,
+            Header,
+          },
+          onReady: () => {
+            console.log("初始化");
+          },
+          onChange: (api, event) => {
+            //TODO 延迟保存
+            editor
+              .save()
+              .then((outputData) => {
+                this.save(outputData);
+                console.log("Article data: ", JSON.stringify(outputData));
+              })
+              .catch((error) => {
+                console.log("Saving failed: ", error);
+              });
+          },
+        }));
+      },
+    },
   },
 };
 </script>

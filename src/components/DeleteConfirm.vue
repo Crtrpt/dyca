@@ -33,20 +33,18 @@
                 as="h3"
                 class="text-lg font-medium leading-6 text-gray-900"
               >
-                新建文件
+                {{ showDeleteConfirmDialogTitle }}
               </DialogTitle>
               <div class="mt-2">
-                <input
-                  v-model="filename"
-                  class="text-sm text-gray-500 p-1 outline-none border w-full"
-                  @keyup.enter="createFile()"
-                />
+                <div class="text-sm text-gray-500">
+                  {{ showDeleteConfirmDialogDesc }}
+                </div>
               </div>
 
               <div class="mt-4">
                 <button
                   type="button"
-                  class="inline-flex justify-center border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                  class="inline-flex justify-center border border-transparent bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
                   @click="saveAndcloseModal"
                 >
                   确定
@@ -87,6 +85,8 @@ const store = useFileStore();
 
 var props = defineProps({
   modelValue: Boolean,
+  showDeleteConfirmDialogTitle: String,
+  showDeleteConfirmDialogDesc: String,
 });
 
 watch(props, (n, o) => {
@@ -95,13 +95,12 @@ watch(props, (n, o) => {
 
 var emit = defineEmits(["update:modelValue"]);
 
-function createFile() {
-  console.log(filename);
-  store.createFile(filename.value);
+function removeCur() {
+  store.removeFile();
 }
 
 const saveAndcloseModal = () => {
-  store.createFile(filename.value);
+  store.removeFile();
   closeModal();
 };
 function closeModal() {

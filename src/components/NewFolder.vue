@@ -27,28 +27,37 @@
             leave-to="opacity-0 scale-95"
           >
             <DialogPanel
-              class="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"
+              class="w-full max-w-md transform overflow-hidden rounded bg-white p-6 text-left align-middle shadow-xl transition-all"
             >
               <DialogTitle
                 as="h3"
                 class="text-lg font-medium leading-6 text-gray-900"
               >
-                新建目录
+                新建文件夹
               </DialogTitle>
               <div class="mt-2">
-                <p class="text-sm text-gray-500">
-                  Your payment has been successfully submitted. We’ve sent you
-                  an email with all of the details of your order.
-                </p>
+                <input
+                  v-model="filename"
+                  class="text-sm text-gray-500 p-1 outline-none border w-full"
+                  @keyup.enter="createFolder()"
+                />
               </div>
 
               <div class="mt-4">
                 <button
                   type="button"
-                  class="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                  @click="closeModal"
+                  class="inline-flex justify-center border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                  @click="saveAndcloseModal"
                 >
                   确定
+                </button>
+
+                <button
+                  type="button"
+                  class="inline-flex justify-center border border-transparent px-4 py-2 text-sm font-medium text-blue-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                  @click="closeModal"
+                >
+                  取消
                 </button>
               </div>
             </DialogPanel>
@@ -59,7 +68,7 @@
   </TransitionRoot>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { ref, watch } from "vue";
 import {
   TransitionRoot,
@@ -68,6 +77,13 @@ import {
   DialogPanel,
   DialogTitle,
 } from "@headlessui/vue";
+
+import { useFileStore } from "../store/filesStore";
+
+const isOpen = ref(false);
+const filename = ref("");
+
+const store = useFileStore();
 
 var props = defineProps({
   modelValue: Boolean,
@@ -79,13 +95,19 @@ watch(props, (n, o) => {
 
 var emit = defineEmits(["update:modelValue"]);
 
-const isOpen = ref(false);
+function createFolder() {
+  console.log(filename);
+  store.createFolder(filename.value);
+}
 
+const saveAndcloseModal = () => {
+  store.createFolder(filename.value);
+  closeModal();
+};
 function closeModal() {
   emit("update:modelValue", false);
   isOpen.value = false;
 }
-
 function openModal() {
   isOpen.value = true;
 }
