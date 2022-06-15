@@ -87,7 +87,6 @@ export const useFileStore = defineStore("filesStore", {
     createFile(fName: String) {
       if (this.cur) {
         if (this!.cur!.type == "folder") {
-          console.log("增加文件");
           this.cur.children.push({
             name: fName,
             type: "file",
@@ -131,8 +130,6 @@ export const useFileStore = defineStore("filesStore", {
     createFolder(fName: String) {
       if (this.cur) {
         if (this!.cur!.type == "folder") {
-          console.log(this.cur);
-          console.log("增加文件夹" + (this.cur._level + 1));
           this.cur.children.push({
             name: fName,
             type: "folder",
