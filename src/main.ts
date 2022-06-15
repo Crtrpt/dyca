@@ -3,6 +3,9 @@ import { createRouter, createWebHashHistory } from "vue-router";
 
 import Dyca from "./Dyca.vue";
 import Home from "./Home.vue";
+import { createI18n } from "vue-i18n";
+import { message } from "./i18n";
+
 import Center from "./view/Center.vue";
 import "./index.css";
 import "./Context.css";
@@ -41,6 +44,15 @@ library.add(
 );
 
 const app = createApp(Dyca);
+
+console.log(message);
+const i18n = createI18n({
+  locale: "zh",
+  fallbackLocale: "zh",
+  messages: message,
+});
+
+app.use(i18n);
 
 app.use(createPinia());
 
