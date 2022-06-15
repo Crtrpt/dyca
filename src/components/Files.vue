@@ -18,7 +18,8 @@
         <font-awesome-icon v-if="r._open" icon="folder-open" class="px-2 w-5" />
         <font-awesome-icon v-else icon="folder-closed" class="px-2 w-5" />
       </template>
-      <div>{{ r.name }}</div>
+      <div  class=" flex-grow overflow-hidden"  v-if="!r._rename">{{ r.name }}</div>
+      <input  class=" flex-grow input  p-0.5 mr-5 border" @keyup.enter="saveName(r)" v-if="r._rename" v-model="r.name" />
     </div>
     <div v-if="r._open && (r?.children?.length || 0 > 0) && r._delete == false">
       <Files :data="r.children"></Files>
@@ -36,12 +37,12 @@ export default {
     ...mapState(useFileStore, ["cur"]),
   },
   methods: {
-    ...mapActions(useFileStore, ["setCurFile", "setCurFileV1"]),
+    ...mapActions(useFileStore, ["setCurFile", "setCurFileV1","setRename","saveName"]),
     setRouteWithCurFile(r) {
       console.log(this.$router);
       this.$router.push({ path: "/file" + r._path });
       this.setCurFile(r);
-    },
+    }
   },
   props: {
     data: Array,

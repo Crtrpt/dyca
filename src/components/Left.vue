@@ -1,5 +1,5 @@
 <template>
-  <div class="select-none flex">
+  <div class="select-none flex" ref="file">
     <div
       class="text-gray-500 text-sm flex flex-row-reverse py-2"
       @click="
@@ -34,7 +34,7 @@
         :showDeleteConfirmDialogDesc="showDeleteConfirmDialogDesc"
       ></DeleteConfirm>
     </div>
-    <div class="border-t relative flex-grow overflow-auto" ref="file">
+    <div class="border-t relative flex-grow overflow-auto" >
       <Files :data="root" class="flex-col"></Files>
     </div>
   </div>
@@ -54,7 +54,7 @@ export default {
   computed: {
     ...mapState(useFileStore, ["root", "cur"]),
   },
-  methods: { ...mapActions(useFileStore, ["setCurFile", "setCurFileV1"]) },
+  methods: { ...mapActions(useFileStore, ["setCurFile", "setCurFileV1","setRename","copy","paste"]) },
   setup() {
     const fileStore = useFileStore();
     return {
@@ -75,6 +75,29 @@ export default {
         value: "save_widget",
         onclick: () => {
           this.showFileDialog = true;
+        },
+      },
+       null,
+      {
+        text: "复制",
+        value: "copy",
+        onclick: () => {
+           this.copy();
+        },
+      },
+       {
+        text: "粘贴",
+        value: "past",
+        onclick: () => {
+           this.paste();
+        },
+      },
+      null,
+      {
+        text: "重命名",
+        value: "rename",
+        onclick: () => {
+          this.setRename();
         },
       },
       null,

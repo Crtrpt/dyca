@@ -3,7 +3,7 @@
     <Menu as="div" class="relative inline-block text-left">
       <div>
         <MenuButton
-          class="text-sm rounded-full px-6 py-1 cursor-pointer border hover:bg-gray-100 hover:border-blue-500 hover:shadow-sm inline-flex w-full justify-center font-medium hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+          class="text-sm rounded-full px-6 py-1 cursor-pointer border border-gray-500 hover:border-blue-500 hover:shadow-sm inline-flex w-full justify-center font-medium hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
         >
           操作
         </MenuButton>

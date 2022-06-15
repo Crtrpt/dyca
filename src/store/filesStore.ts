@@ -65,6 +65,21 @@ export const useFileStore = defineStore("filesStore", {
     setCurFileV1(f: any) {
       this.cur = f;
     },
+    copy() {
+      console.log(r);
+      this.cur._rename = false;
+    },
+    paste() {
+      console.log(r);
+      this.cur._rename = false;
+    },
+    saveName(r) {
+      console.log(r);
+      this.cur._rename = false;
+    },
+    setRename(r) {
+      this.cur._rename = true;
+    },
     removeFile() {
       this.cur._delete = true;
       this.cur = null;
